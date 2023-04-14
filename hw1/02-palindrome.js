@@ -1,30 +1,32 @@
-const elem = document.querySelector("input");
-const resultPalindrome = document.querySelector(".resultPalindrome");
+const elem = document.querySelector('input');
+const resultPalindromeString = document.querySelector(
+  '.resultPalindromeString'
+);
 
 function handleInput(event) {
+  resultPalindromeString.classList.add('text-danger');
   event.preventDefault();
-  resultPalindrome.innerHTML = "";
+  resultPalindromeString.innerHTML = '';
 
   const userInputValue = parseInt(elem.value);
 
   if (Number.isNaN(userInputValue)) {
-    resultPalindrome.innerHTML = "";
+    resultPalindromeString.innerHTML = '';
     return;
   }
 
   if (userInputValue < 0) {
-    resultPalindrome.innerHTML =
-      '<p class="text-danger">Please enter a positive number.</p>';
+    resultPalindromeString.innerHTML = 'Please enter a positive number.';
     return;
   }
 
   const reversedValue = checkPalindrome(userInputValue);
 
   if (reversedValue) {
-    resultPalindrome.innerHTML =
-      '<p class="text-success">Yes. This is a palindrome!</p>';
+    resultPalindromeString.classList.replace('text-danger', 'text-success');
+    resultPalindromeString.innerHTML = 'Yes. This is a palindrome!';
   } else {
-    resultPalindrome.innerHTML = '<p class="text-danger">No. Try again.</p>';
+    resultPalindromeString.innerHTML = 'No. Try again.';
   }
 }
 
@@ -46,4 +48,4 @@ let checkPalindrome = (inputValue) => {
   return isPalindrome;
 };
 
-elem.addEventListener("input", handleInput);
+elem.addEventListener('input', handleInput);
