@@ -7,14 +7,139 @@
     <title>05 - Form</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
     <script defer src="05-form.js"></script>
   </head>
-  <body>
-    <main>
-      <form>
-        <h1>Exercise 05 - Form</h1>
-      </form>
+  <body class="bg-dark">
+    <main class="d-flex justify-content-center">
+      <div class="w-60">
+        <form class="bg-light pb-2 pt-2 mt-5" id="contactForm">
+          <h1 class="text-center">Exercise 05 - Form</h1>
+          <div class="row my-4 mx-auto">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="fw-bold" for="fullName">Full Name:</label>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <input
+                class="form-control"
+                id="fullName"
+                name="fullName"
+                type="text"
+                required
+              />
+            </div>
+          </div>
+          <div class="row my-4 mx-auto">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="fw-bold" for="emailAddress">Email: </label>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <input
+                class="form-control"
+                id="emailAddress"
+                name="emailAddress"
+                type="email"
+                required
+              />
+            </div>
+          </div>
+          <div class="row my-4 mx-auto">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="fw-bold" for="registrationStatus"
+                >Registration Status:</label
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <select
+                class="form-control"
+                id="registrationStatus"
+                name="registrationStatus"
+              >
+                <option value="chooseAnOption">Choose an Option</option>
+                <option value="registered">Registered</option>
+                <option value="pending">Pending</option>
+                <option value="Dropped">Dropped</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row my-4 mx-auto">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="fw-bold">
+                Have you taken any of the following courses?</label
+              >
+              <div class="form-check">
+                <input
+                  class="form-check-input coursesCheckbox"
+                  id="programmingLanguages"
+                  type="checkbox"
+                  name="Programming Languages"
+                />
+                <label class="form-check-label" for="programmingLanguages">
+                  Programming Languages
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input coursesCheckbox"
+                  id="operatingSystems"
+                  type="checkbox"
+                  name="Operating Systems"
+                />
+                <label class="form-check-label" for="operatingSystems">
+                  Operating Systems
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input coursesCheckbox"
+                  id="fullstackDevelopment"
+                  type="checkbox"
+                  name="Full-Stack Web Developemt"
+                />
+                <label class="form-check-label" for="fullstackDevelopment">
+                  Full-Stack Web Developemt
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row my-4 mx-auto">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label class="fw-bold" for="anythingElse">Anything Else?</label>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <textarea
+                class="form-control"
+                id="anythingElse"
+                name="anythingElse"
+                maxlength="200"
+              >
+              </textarea>
+            </div>
+          </div>
+          <div class="row my-4 mx-auto">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="btn-group w-100 mb-3">
+                <button
+                  type="submit"
+                  class="btn btn-primary rounded me-1 btn-sm"
+                  id="submitButton"
+                >
+                  Submit
+                </button>
+                <button
+                  type="reset"
+                  class="btn btn-secondary rounded ms-1 btn-sm"
+                  id="resetButton"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </main>
   </body>
 </html>
