@@ -8,7 +8,6 @@ inputElement.addEventListener('keyup', (event) => {
   const wordsHighlighted = wordsFromText.map((item) => {
     const tempVariable = `<span class="bg-warning">${item}</span>`;
     if (inputWord === item.trim()) {
-      `<span class="bg-warning">${item}</span>`;
       return tempVariable;
     }
     return item;
