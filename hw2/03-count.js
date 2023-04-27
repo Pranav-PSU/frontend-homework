@@ -1,16 +1,17 @@
-const input = document.querySelector("input");
-const container = document.querySelector(".text");
+const inputElement = document.querySelector('input');
+const containerElement = document.querySelector('.text');
 
-// key-up functino to highlight the input words
-input.addEventListener("keyup", function (event) {
-  const inputWord = event.target.value.toLowerCase();
-  const wordsFromText = container.textContent.trim().split(/\s+/);
-  const wordsHighlighted = wordsFromText.map(function (item) {
-    if (inputWord === item.toLowerCase()) {
-      return '<span class="bg-warning">' + item + "</span>";
-    } else {
-      return item;
+inputElement.addEventListener('keyup', (event) => {
+  const inputWord = event.target.value.trim();
+  const wordsFromText = containerElement.textContent.trim().split(/\s+/);
+
+  const wordsHighlighted = wordsFromText.map((item) => {
+    const tempVariable = `<span class="bg-warning">${item}</span>`;
+    if (inputWord === item.trim()) {
+      `<span class="bg-warning">${item}</span>`;
+      return tempVariable;
     }
+    return item;
   });
-  container.innerHTML = wordsHighlighted.join(" ");
+  containerElement.innerHTML = wordsHighlighted.join(' ');
 });

@@ -1,50 +1,52 @@
-let interval;
-let isIntervalRunning = false;
+let colorInterval;
+let isIntervalRunning = true;
+const startButton = document.querySelector('#startButton');
+const intervalInput = document.querySelector('#inputSecondsValue');
+const bodyClass = document.querySelector('#bodyClass');
 
 function randomColorValue(number) {
   return Math.floor(Math.random() * number);
 }
 
 function generateRandomColor() {
-  const a = 0.4;
-  let h = randomColorValue(360);
-  let s = randomColorValue(100);
-  let l = randomColorValue(100);
-  return `hsla(${h}, ${s}%, ${l}%, ${a})`;
+  const aColorValue = 0.4;
+  const hColorValue = randomColorValue(360);
+  const sColorValue = randomColorValue(100);
+  const lColorValue = randomColorValue(100);
+  return `hsla(${hColorValue}, ${sColorValue}%, ${lColorValue}%, ${aColorValue})`;
 }
 
 function changeBackgroundColor() {
-  document.body.style.backgroundColor = generateRandomColor();
+  bodyClass.style.backgroundColor = generateRandomColor();
 }
 
-function startInterval() {
-  const intervalInput = document.getElementById("inputSecondsValue");
+function startChangingBackground() {
   const inputSecondsValue = intervalInput.value;
 
-  if (!Number.isNaN(inputSecondsValue) && !(inputSecondsValue <= 0))
-    interval = setInterval(changeBackgroundColor, inputSecondsValue * 1000);
-  else {
-    alert("Please provide a valid integer");
+  if (!Number.isNaN(inputSecondsValue) && !(inputSecondsValue <= 0)) {
+    colorInterval = setInterval(
+      changeBackgroundColor,
+      inputSecondsValue * 1000,
+    );
+  } else {
+    alert('Please provide a valid integer');
     isIntervalRunning = true;
   }
 }
 
-function ChangeButtonText() {
-  const toggleBtn = document.getElementById("startButton");
-  if (isIntervalRunning) {
-    clearInterval(interval);
-    toggleBtn.textContent = "Start";
-    toggleBtn.classList.remove("stop");
-    toggleBtn.classList.add("start");
+function changeButtonText() {
+  if (!isIntervalRunning) {
+    clearInterval(colorInterval);
+    startButton.textContent = 'Start';
+    startButton.classList.remove('stop');
+    startButton.classList.add('start');
   } else {
-    startInterval();
-    toggleBtn.textContent = "Stop";
-    toggleBtn.classList.remove("start");
-    toggleBtn.classList.add("stop");
+    startChangingBackground();
+    startButton.textContent = 'Stop';
+    startButton.classList.remove('start');
+    startButton.classList.add('stop');
   }
   isIntervalRunning = !isIntervalRunning;
 }
 
-document
-  .getElementById("startButton")
-  .addEventListener("click", ChangeButtonText);
+startButton.addEventListener('click', changeButtonText);
