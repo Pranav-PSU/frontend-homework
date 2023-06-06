@@ -11,7 +11,6 @@ async function addCharacters(charactersInformation) {
     // div element for an image
     const imageDivEement = document.createElement('div');
     imageDivEement.className = 'pt-2 justify-content-center mx-auto imageDivEementClass';
-    imageDivEement.style = 'text-align: center; width: 190px; height: 340px; margin-top: 20px;  padding: 0px;';
 
     // Add hover background color change
     imageDivEement.addEventListener('mouseover', () => {
@@ -27,7 +26,7 @@ async function addCharacters(charactersInformation) {
     // Creating the image
     const img = document.createElement('img');
     img.src = character.imageUrl;
-    img.style = 'width: 170px; height: 200px; object-fit: cover;';
+    img.className = 'imageElement';
     img.alt = `Portrait of ${character.fullName}`;
 
     // Creating h2 element for name of the character
@@ -41,9 +40,7 @@ async function addCharacters(charactersInformation) {
     characterTitle.textContent = character.title;
 
     // Appending all the custom elements in their respective parent div
-    imageDivEement.appendChild(img);
-    imageDivEement.appendChild(characterName);
-    imageDivEement.appendChild(characterTitle);
+    imageDivEement.append(img, characterName, characterTitle);
     parentDivElement.appendChild(imageDivEement);
 
     // Appending parent div element in the row
@@ -61,7 +58,8 @@ function fetchData(apiUrl, callback) {
       callback(data);
     })
     .catch((error) => {
-      console.error('Fetch Failed', error);
+      console.log('Fetch Failed:', error);
+      alert('Fetch Failed: Something went wrong', error);
     });
 }
 
